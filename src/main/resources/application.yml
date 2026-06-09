@@ -1,18 +1,23 @@
+server:
+  port: 80
+
 spring:
-  application:
-    name: chwigo
   datasource:
-    url: jdbc:mysql://swmh-stud-06-rds-mysql-03.ct8skcuq8gu3.ap-northeast-2.rds.amazonaws.com/dgsw_start_db
+    url: jdbc:mysql://swmh-stud-06-rds-05.ct8skcuq8gu3.ap-northeast-2.rds.amazonaws.com:3306/dgsw
     username: admin
     password: dgsw.hs.kr
     driver-class-name: com.mysql.cj.jdbc.Driver
+  profiles:
+    active: dev
+  cloud:
+    aws:
+      s3:
+        bucket: swmh-stud-06-s3-05
+      region:
+        static: ap-northeast-2
   jpa:
     hibernate:
-      ddl-auto: update
-    show-sql: true
-    properties:
-      hibernate:
-        format_sql: true
-
-server:
-  port: 80
+      ddl-auto: create
+  servlet:
+    multipart:
+      max-file-size: 4GB

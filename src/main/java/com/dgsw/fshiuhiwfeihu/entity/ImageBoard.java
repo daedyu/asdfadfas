@@ -1,26 +1,27 @@
 package com.dgsw.fshiuhiwfeihu.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
+@Table(name = "image_board")
 @Getter
 @NoArgsConstructor
-public class Board {
+public class ImageBoard {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String title;
     private String content;
+    private String imageUrl;
 
     @Builder
-    public Board(String title, String content) {
+    public ImageBoard(String title, String content, String imageUrl) {
         this.title = title;
         this.content = content;
+        this.imageUrl = imageUrl;
     }
 }
